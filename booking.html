@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Service | AutoCare Pro</title>
+    <link rel="stylesheet" href="csslab.css">
+</head>
+<body>
+
+    <header>
+        <h1>AUTO<span>CARE</span> PRO</h1>
+        <p><em>Precision servicing. Every make, every model, every time.</em></p>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="services.html">Our Services</a>
+            <a href="booking.html">Book a Service</a>
+            <a href="gallery.html">Gallery</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <h2>Book Your Service Appointment</h2>
+        <p>Fill in the form below and our team will confirm your slot within 2 hours. Slots are subject to availability — book early to secure your preferred time.</p>
+
+        <form action="#" method="post" class="form-card">
+
+            <fieldset>
+                <legend>Your Details</legend>
+
+                <label for="fullname">Full Name:</label>
+                <input type="text" id="fullname" name="fullname" placeholder="e.g. James Kariuki" required>
+
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" placeholder="you@example.com" required>
+
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" placeholder="+254 7XX XXX XXX" required>
+            </fieldset>
+
+            <fieldset>
+                <legend>Vehicle Information</legend>
+
+                <label for="make">Vehicle Make &amp; Model:</label>
+                <input type="text" id="make" name="make" placeholder="e.g. Toyota Prado 2019" required>
+
+                <label for="regno">Registration Number:</label>
+                <input type="text" id="regno" name="regno" placeholder="e.g. KDD 123A" required>
+
+                <label for="mileage">Current Mileage (km):</label>
+                <input type="text" id="mileage" name="mileage" placeholder="e.g. 85,000">
+            </fieldset>
+
+            <fieldset>
+                <legend>Service Required</legend>
+                <p>Which package are you booking? (Select one)</p>
+
+                <div class="radio-option">
+                    <input type="radio" id="basic" name="package" value="basic">
+                    <label for="basic">Basic Service — Oil change, filter &amp; tyre check (from KSh 3,500)</label>
+                </div>
+
+                <div class="radio-option">
+                    <input type="radio" id="intermediate" name="package" value="intermediate">
+                    <label for="intermediate">Intermediate Service — Brakes, suspension &amp; AC included (from KSh 7,500)</label>
+                </div>
+
+                <div class="radio-option">
+                    <input type="radio" id="comprehensive" name="package" value="comprehensive">
+                    <label for="comprehensive">Comprehensive Service — Full vehicle overhaul (from KSh 15,000)</label>
+                </div>
+
+                <div class="radio-option">
+                    <input type="radio" id="premium" name="package" value="premium">
+                    <label for="premium">Premium Full Detail — Ceramic coat &amp; deep clean (from KSh 22,000)</label>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Appointment Preference</legend>
+
+                <label for="date">Preferred Date:</label>
+                <input type="date" id="date" name="date" required>
+
+                <label for="timeslot">Preferred Time Slot:</label>
+                <select id="timeslot" name="timeslot">
+                    <option value="">— Select a time —</option>
+                    <option value="0800">08:00 AM – 10:00 AM</option>
+                    <option value="1000">10:00 AM – 12:00 PM</option>
+                    <option value="1200">12:00 PM – 02:00 PM</option>
+                    <option value="1400">02:00 PM – 04:00 PM</option>
+                    <option value="1600">04:00 PM – 06:00 PM</option>
+                </select>
+            </fieldset>
+
+            <label for="notes">Additional Notes or Fault Description:</label>
+            <textarea id="notes" name="notes" placeholder="Describe any specific issues — unusual noises, warning lights, handling concerns..."></textarea>
+
+            <input type="submit" value="Confirm Booking Request">
+
+        </form>
+
+        <hr>
+
+        <h3>Workshop Location</h3>
+        <address>
+            <strong>AutoCare Pro — Main Workshop</strong><br>
+            Plot 14, Mombasa Road Industrial Area<br>
+            Nairobi, Kenya<br>
+            📞 +254 700 123 456<br>
+            ✉️ bookings@autocarepro.co.ke<br>
+            🕐 Mon – Sat: 7:30 AM – 6:00 PM
+        </address>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 AutoCare Pro Vehicle Management. All rights reserved.</p>
+        <p>📍 Mombasa Road, Nairobi &nbsp;|&nbsp; 📞 +254 700 123 456 &nbsp;|&nbsp; ✉️ info@autocarepro.co.ke</p>
+        <p><a href="index.html">Back to Home</a> &nbsp;·&nbsp; <a href="services.html">View Services</a> &nbsp;·&nbsp; <a href="gallery.html">Gallery</a></p>
+    </footer>
+
+</body>
+</html>

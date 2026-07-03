@@ -1,0 +1,838 @@
+/* ==========================================================================
+   AUTOCARE PRO — csslab.css
+   Single external stylesheet for all pages (index, services, booking, gallery)
+   Design language: precision automotive workshop — clean steel, rich charcoal,
+   and a signal-orange accent that reads "workshop alert" without shouting.
+   ========================================================================== */
+
+/* ---------- Google Font import ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap');
+
+/* ---------- Design tokens ---------- */
+:root {
+  --steel:        #F0F2F4;   /* page background, brushed-steel light */
+  --charcoal:     #1C2127;   /* headers, dark text, navbar */
+  --mid:          #3A4250;   /* secondary text, borders */
+  --panel:        #E4E8ED;   /* card backgrounds */
+  --white:        #FFFFFF;
+  --orange:       #E8600A;   /* primary accent — workshop orange */
+  --orange-dark:  #C04E05;
+  --orange-glow:  rgba(232, 96, 10, 0.15);
+
+  --font-display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --font-body:    "Barlow", -apple-system, sans-serif;
+
+  --radius:       6px;
+  --radius-lg:    10px;
+  --shadow-soft:  0 4px 14px rgba(28, 33, 39, 0.12);
+  --shadow-lift:  0 10px 28px rgba(28, 33, 39, 0.22);
+
+  /* Diagonal pinstripe — echoes racing/workshop tape markings */
+  --pinstripe: repeating-linear-gradient(
+    -45deg,
+    var(--orange) 0px,
+    var(--orange) 3px,
+    transparent 3px,
+    transparent 14px
+  );
+}
+
+/* ---------- Reset & base ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--steel);
+  color: var(--charcoal);
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: var(--orange);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--orange-dark);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--charcoal);
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+h1 { font-size: 2.8rem; font-weight: 700; }
+h2 { font-size: 2.1rem; font-weight: 700; margin-bottom: 0.6rem; }
+h3 { font-size: 1.45rem; font-weight: 600; margin-bottom: 0.5rem; }
+h4 { font-size: 1.1rem; font-weight: 600; }
+
+p { margin-bottom: 1rem; color: var(--mid); }
+
+ul { list-style: none; }
+
+hr {
+  border: none;
+  height: 3px;
+  background: var(--pinstripe);
+  margin: 2.5rem 0;
+  opacity: 0.5;
+}
+
+/* ---------- Layout shell ---------- */
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+}
+
+section {
+  margin-bottom: 3rem;
+}
+
+/* ==========================================================================
+   HEADER
+   ========================================================================== */
+
+header {
+  background: linear-gradient(175deg, var(--charcoal) 0%, #12171d 100%);
+  color: var(--white);
+  text-align: center;
+  padding: 2.4rem 1.5rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Diagonal pinstripe accent strip across the top of the header */
+header::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 5px;
+  background: var(--pinstripe);
+}
+
+header h1 {
+  color: var(--white);
+  letter-spacing: 0.06em;
+}
+
+header h1 span {
+  color: var(--orange);
+}
+
+header > p {
+  color: #8A95A3;
+  font-style: italic;
+  margin-bottom: 1.6rem;
+  font-size: 1rem;
+}
+
+/* ==========================================================================
+   NAVBAR — Flexbox top navigation
+   ========================================================================== */
+
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0 0.25rem;
+  background-color: var(--charcoal);
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding: 0 1.5rem;
+  /* hide any leftover " | " text from original markup */
+  font-size: 0;
+}
+
+nav a {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #C8D0D9;
+  padding: 0.9rem 1.2rem;
+  display: inline-block;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 1.2rem;
+  right: 1.2rem;
+  bottom: 0;
+  height: 3px;
+  background-color: var(--orange);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.25s ease;
+}
+
+nav a:hover {
+  color: var(--white);
+}
+
+nav a:hover::after {
+  transform: scaleX(1);
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+
+footer {
+  background-color: var(--charcoal);
+  color: #6B7685;
+  text-align: center;
+  padding: 2rem 1.5rem;
+  font-size: 0.9rem;
+  border-top: 4px solid var(--orange);
+}
+
+footer p {
+  color: #6B7685;
+  margin-bottom: 0.3rem;
+}
+
+footer a {
+  color: #C8D0D9;
+  font-weight: 500;
+}
+
+footer a:hover {
+  color: var(--orange);
+}
+
+/* ==========================================================================
+   BUTTONS
+   ========================================================================== */
+
+.btn,
+input[type="submit"] {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--white);
+  background-color: var(--orange);
+  border: none;
+  border-radius: var(--radius);
+  padding: 0.8rem 1.8rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+  box-shadow: var(--shadow-soft);
+}
+
+.btn:hover,
+input[type="submit"]:hover {
+  background-color: var(--orange-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lift);
+  color: var(--white);
+}
+
+.btn:active,
+input[type="submit"]:active {
+  transform: translateY(0);
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 2px solid var(--orange);
+  color: var(--orange);
+  box-shadow: none;
+}
+
+.btn-outline:hover {
+  background-color: var(--orange);
+  color: var(--white);
+}
+
+/* ==========================================================================
+   HOME PAGE
+   ========================================================================== */
+
+.hero-banner {
+  background-color: var(--charcoal);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem 2rem;
+  text-align: center;
+  box-shadow: var(--shadow-lift);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Corner tape decoration */
+.hero-banner::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 80px;
+  height: 80px;
+  background: var(--pinstripe);
+  opacity: 0.3;
+}
+
+.hero-banner h3 {
+  color: var(--orange);
+  margin-bottom: 0.8rem;
+}
+
+.hero-banner p {
+  color: #8A95A3;
+}
+
+.hero-banner img {
+  margin: 1.2rem auto;
+  border-radius: var(--radius);
+  border: 2px solid var(--orange);
+  max-width: 340px;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.hero-banner img:hover {
+  transform: scale(1.04);
+  box-shadow: 0 0 28px rgba(232, 96, 10, 0.4);
+}
+
+.services-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.services-list li {
+  background-color: var(--white);
+  border-left: 4px solid var(--orange);
+  padding: 1rem 1.2rem;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.services-list li:hover {
+  transform: translateX(5px);
+  box-shadow: var(--shadow-lift);
+}
+
+.services-list strong {
+  color: var(--charcoal);
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.services-list li p {
+  margin-bottom: 0;
+  font-size: 0.9rem;
+}
+
+/* Why-choose cards row */
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.2rem;
+  margin-top: 1.5rem;
+}
+
+.why-card {
+  background-color: var(--white);
+  border-radius: var(--radius);
+  padding: 1.4rem 1.2rem;
+  text-align: center;
+  box-shadow: var(--shadow-soft);
+  border-top: 3px solid var(--orange);
+  transition: transform 0.2s ease;
+}
+
+.why-card:hover {
+  transform: translateY(-4px);
+}
+
+.why-card .why-icon {
+  font-size: 2rem;
+  margin-bottom: 0.6rem;
+  display: block;
+}
+
+.why-card h4 {
+  margin-bottom: 0.4rem;
+  font-size: 1rem;
+}
+
+.why-card p {
+  font-size: 0.88rem;
+  margin-bottom: 0;
+}
+
+/* ==========================================================================
+   SERVICES PAGE (shop.html)
+   ========================================================================== */
+
+.video-card {
+  background-color: var(--charcoal);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: var(--shadow-lift);
+}
+
+.video-card h3 {
+  color: var(--white);
+  margin-bottom: 1rem;
+}
+
+.video-card video {
+  margin: 0 auto;
+  border-radius: var(--radius);
+  border: 2px solid var(--orange);
+  max-width: 100%;
+}
+
+.featured-banner {
+  background-color: var(--white);
+  border: 1px solid #D0D5DC;
+  border-radius: var(--radius-lg);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+}
+
+.featured-banner::after {
+  content: "FEATURED";
+  position: absolute;
+  top: 14px;
+  right: -28px;
+  background-color: var(--orange);
+  color: var(--white);
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 4px 40px;
+  transform: rotate(45deg);
+}
+
+.featured-banner h3 {
+  color: var(--orange);
+}
+
+.featured-banner img {
+  margin: 1rem auto;
+  border-radius: var(--radius);
+  max-width: 320px;
+  transition: transform 0.3s ease;
+}
+
+.featured-banner img:hover {
+  transform: scale(1.04);
+}
+
+/* Service package cards grid */
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.service-card {
+  background-color: var(--white);
+  border: 1px solid #D0D5DC;
+  border-radius: var(--radius-lg);
+  padding: 1.2rem;
+  text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lift);
+  border-color: var(--orange);
+}
+
+.service-card img {
+  border-radius: var(--radius);
+  margin-bottom: 0.8rem;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  width: 100%;
+}
+
+.service-card p {
+  color: var(--charcoal);
+  margin-bottom: 0;
+  font-size: 0.95rem;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.service-card .price-tag {
+  display: inline-block;
+  background-color: var(--orange-glow);
+  color: var(--orange-dark);
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  margin-top: 0.4rem;
+  font-family: var(--font-body);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+/* Specs/comparison table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+}
+
+thead {
+  background-color: var(--charcoal);
+}
+
+th {
+  color: var(--white);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  text-align: left;
+  padding: 0.9rem 1.2rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+td {
+  padding: 0.85rem 1.2rem;
+  border-bottom: 1px solid var(--panel);
+  color: var(--mid);
+}
+
+tbody tr:hover {
+  background-color: var(--panel);
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ==========================================================================
+   BOOKING FORM PAGE (order.html)
+   ========================================================================== */
+
+.form-card {
+  background-color: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 2.2rem;
+  box-shadow: var(--shadow-soft);
+  border-top: 6px solid var(--orange);
+}
+
+fieldset {
+  border: 1px solid #D0D5DC;
+  border-radius: var(--radius);
+  padding: 1.5rem 1.5rem 1.8rem;
+  margin-bottom: 1.6rem;
+}
+
+legend {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--orange);
+  padding: 0 0.6rem;
+  font-size: 1.1rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+label {
+  display: block;
+  font-weight: 500;
+  color: var(--charcoal);
+  margin-bottom: 0.35rem;
+  margin-top: 1rem;
+  font-size: 0.92rem;
+}
+
+fieldset > label:first-of-type {
+  margin-top: 0;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+select,
+textarea {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 0.97rem;
+  color: var(--charcoal);
+  background-color: var(--steel);
+  border: 1px solid #C8CDD5;
+  border-radius: var(--radius);
+  padding: 0.7rem 0.9rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="date"]:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--orange);
+  box-shadow: 0 0 0 3px var(--orange-glow);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+fieldset p {
+  color: var(--mid);
+  font-size: 0.92rem;
+  margin-top: 0;
+  margin-bottom: 0.8rem;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  accent-color: var(--orange);
+  margin-right: 0.5rem;
+  transform: scale(1.15);
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.8rem;
+  border: 1px solid #D0D5DC;
+  border-radius: var(--radius);
+  margin-bottom: 0.6rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.radio-option:hover {
+  border-color: var(--orange);
+  background-color: var(--orange-glow);
+}
+
+.radio-option label {
+  margin: 0;
+  cursor: pointer;
+  font-weight: 400;
+}
+
+form .btn,
+form input[type="submit"] {
+  margin-top: 0.8rem;
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.05rem;
+}
+
+address {
+  background-color: var(--panel);
+  border-radius: var(--radius);
+  padding: 1.4rem 1.6rem;
+  font-style: normal;
+  color: var(--mid);
+  border-left: 5px solid var(--orange);
+  line-height: 1.9;
+}
+
+address strong {
+  color: var(--charcoal);
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+   GALLERY PAGE — CSS Flip Cards
+   ========================================================================== */
+
+.gallery-intro {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 2.5rem;
+}
+
+.gallery-intro h2 {
+  margin-bottom: 0.6rem;
+}
+
+.flip-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 2rem;
+}
+
+.flip-card {
+  perspective: 1200px;
+  height: 290px;
+  cursor: pointer;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.65s cubic-bezier(0.4, 0.2, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner,
+.flip-card:focus-within .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+}
+
+.flip-card-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.flip-card-front .flip-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(28,33,39,0.9) 100%);
+  color: var(--white);
+  padding: 2rem 1rem 0.8rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-align: center;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.flip-card-back {
+  background-color: var(--charcoal);
+  color: var(--white);
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.6rem;
+  border: 2px solid var(--orange);
+}
+
+.flip-card-back h4 {
+  color: var(--orange);
+  margin-bottom: 0.6rem;
+  font-size: 1.2rem;
+}
+
+.flip-card-back p {
+  color: #A8B2BE;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  margin-bottom: 0;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.6rem; }
+
+  .services-list {
+    grid-template-columns: 1fr;
+  }
+
+  .why-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  nav {
+    padding: 0 0.5rem;
+  }
+
+  nav a {
+    font-size: 0.82rem;
+    padding: 0.75rem 0.7rem;
+  }
+
+  main {
+    padding: 1.8rem 1rem 3rem;
+  }
+
+  .form-card {
+    padding: 1.4rem;
+  }
+
+  .flip-card {
+    height: 240px;
+  }
+
+  .why-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
